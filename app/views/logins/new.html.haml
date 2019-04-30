@@ -1,0 +1,16 @@
+.container.py-4
+    .row
+        .col-sm-12.col-md-6.offset-md-3
+            .card.card-border-primary.card-shadow
+                .card-body
+                    %h4.text-center.text-primary ログイン
+                    = form_for :login_form,url: logins_path do |f|
+                        .text-muted.py-3
+                            .form-group
+                                .text-sm アカウント名
+                                = f.text_field :account_name, {class:"form-custom form-control"}
+                            .form-group
+                                .text-sm パスワード
+                                = f.password_field :password, {class:"form-custom form-control"}
+                            .form-group
+                                = f.submit "ログイン", {class:"btn btn-primary btn-block"}

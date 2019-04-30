@@ -1,0 +1,96 @@
+$primary: #C97FB4;
+$secondary:#A4A9CF;
+$success:#64C99B;
+$warning: rgb(236, 214, 113);
+
+$text-normal: rgb(32, 33, 36);
+$text-muted: rgb(95, 99, 104);
+
+.btn {
+    color: white !important;
+}
+
+.card {
+    border-radius: 0px !important;
+    border: none !important;
+}
+
+.card-border-primary {
+    border-top: solid $primary !important;
+}
+
+.card-border-success {
+    border-top: solid $success !important;
+}
+
+.card-shadow {
+    box-shadow: 0 10px 40px 0 rgba(133, 157, 183, .12), 0 0 8px 0 rgba(135, 158, 184, .1);
+}
+
+body {
+    color: $text-normal;
+}
+
+.bg-light {
+    background: rgba(0, 0, 0, .04) !important;
+}
+
+.text-sm {
+    font-size: 0.7em !important;
+}
+
+// フォーム
+.form-custom {
+    border: none !important;
+    background: rgba(211, 211, 211, 0.308) !important;
+    padding-top: 0.7em !important;
+    padding-bottom: 0.7em !important;
+}
+
+@import "bootstrap";
+@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);
+
+
+// トップページ
+.icon-big {
+    font-size: 10em;
+}
+
+.z-top {
+    position: relative;
+    z-index: 1;
+}
+
+// 横並びメニュー
+.pt-fixed-menu {
+    padding-top: 70px;
+}
+
+
+.menu-item {
+    width: 100%;
+}
+
+.border-btm-primary {
+    border-bottom: solid $primary;
+}
+
+.border-btm-lightgray {
+    border-bottom: solid lightgray;
+    color: lightgray;
+}
+
+// 支出履歴
+.wide-max {
+    width: 100%;
+}
+
+.payoff-body {
+    color: rgba(95, 99, 104, 0.699);
+    font-size: 0.8em;
+}
+
+// ホーム
+.month {
+    width: 10%;
+}

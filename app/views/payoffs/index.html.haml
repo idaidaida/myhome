@@ -1,0 +1,45 @@
+.d-flex.justify-content-around.text-center
+    = link_to households_path,{class:"border-btm-lightgray menu-item py-3"} do
+        家計簿
+    = link_to payoffs_path,{class:"border-btm-primary menu-item py-3"} do
+        精算
+.bg-light
+    .container
+        .card.py-4.bg-light
+            .card-body.text-center
+                %h2.text-primary 未精算金額合計
+                %h3 #{sum(@not_payoffed_households)} 円
+.bg-white
+    .container.py-4
+        %h5.text-center 精算処理
+        - if sum(@not_payoffed_households) == 0
+            .alert.alert-secondary.text-secondary
+                全て精算済みです。
+        - else
+            .alert.alert-danger.text-center.text-danger
+                !!この操作は取り消せません!!
+            %p.text-center.mt-5
+                未精算額を共有財布から受け取ったので、精算済みにします。
+            = link_to "精算処理を実行", payoffs_path, {class:"btn btn-danger btn-block", method: :patch}
+
+.bg-white
+    .container.py-4
+        %h5.text-center 未精算の支払い詳細
+        - if sum(@not_payoffed_households) == 0
+            .alert.alert-secondary.text-secondary
+                全て精算済みです。
+        - else
+            - @not_payoffed_households.each do |household|
+                .card
+                    %ul.list-group.list-group-flush
+                        %li.list-group-item
+                            .payoff-header.d-flex
+                                .payoff-icon
+                                    %i.fas.fa-coins.rounded-circle.bg-primary.text-white.p-3
+                                .payoff-time-and-content.ml-4.wide-max
+                                    .payoff-time.text-muted.text-sm
+                                        #{household.event_date.strftime('%m/%d')}   #{household.account.display_name}
+                                    .payoff-content
+                                        #{household.amount}
+                                    .payoff-body
+                                        #{household.memo}

@@ -1,0 +1,2 @@
+module Configs::AccountsrailsHelper
+end

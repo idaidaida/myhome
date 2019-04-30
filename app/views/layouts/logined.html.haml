@@ -1,0 +1,24 @@
+!!!
+%html
+    %head
+        %meta{ name: 'viewport', content: 'initial-scale=1.0, user-scalable=no' } 
+        %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+        %title Myhome
+        = csrf_meta_tags
+        = csp_meta_tag
+        = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+        = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %body
+        .container
+            .d-flex.justify-content-around.text-center.fixed-top
+                = link_to dashboards_path,{class:"bg-primary menu-item py-3"} do
+                    %i.fas.fa-home.text-white
+                    .text-sm.text-white ホーム
+                = link_to households_path,{class:"bg-secondary menu-item py-3"} do
+                    %i.fas.fa-coins.text-white
+                    .text-sm.text-white 家計簿
+                = link_to configs_path,{class:"bg-success menu-item py-3"} do
+                    %i.fas.fa-cog.text-white
+                    .text-sm.text-white 設定
+        .pt-fixed-menu
+        = yield

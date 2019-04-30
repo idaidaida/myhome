@@ -1,0 +1,40 @@
+.bg-white
+    .container.py-4
+        %h5.text-center アカウントの設定
+        - if flash[:errors]
+            - flash[:errors].each do |msg|
+                .alert.alert-danger
+                    #{msg}
+        = form_for @account_baseinfo_form,url: configs_accounts_baseinfos_path,method: :patch do |f|
+            .form-group
+                .text-sm ユーザー名
+                = f.text_field :account_name, {class:"form-control form-custom"}
+            .form-group
+                .text-sm 表示名
+                = f.text_field :display_name, {class:"form-control form-custom"}
+            .form-group
+                = f.submit "更新する", {class:"btn btn-primary btn-block"}
+.bg-light
+    .container.py-4
+        %h5.text-center パスワードの設定
+        = form_for :secureinfo, url: configs_accounts_secureinfos_path, method: :patch do |f|
+            .form-group
+                .text-sm 新しいパスワード
+                = f.password_field :password, {class:"form-control form-custom"}
+            .form-group
+                .text-sm 新しいパスワード(再入力)
+                = f.password_field :password_confirmation, {class:"form-control form-custom"}
+            .form-group
+                = f.submit "更新する", {class:"btn btn-primary btn-block"}
+.bg-white
+    .container.py-4
+        %h5.text-center 参加者一覧
+        - @accounts.each do |account|
+            .card
+                %ul.list-group.list-group-flush
+                    %li.list-group-item
+                        #{account.display_name}
+    .bg-light
+    .container.py-4
+        %h5.text-center ログアウト
+        = link_to "ログアウトする",logins_path,{class:"btn btn-warning btn-block", method: :delete}

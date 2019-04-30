@@ -1,0 +1,27 @@
+.container.py-4
+    .row
+        .col-sm-12.col-md-6.offset-md-3
+            .card.card-border-primary.card-shadow
+                .card-body
+                    %h4.text-center.text-primary アカウントを登録する
+                    - if @account.errors.any?
+                        - @account.errors.full_messages.each do |msg|
+                            .alert.alert-danger
+                                #{msg}
+                    = form_for @account do |f|                     
+                        .text-muted.py-3
+                            .form-group
+                                .text-sm アカウント名 (半角英数字)
+                                = f.text_field :account_name, {class:"form-control form-custom"}
+                            .form-group
+                                .text-sm 表示名
+                                = f.text_field :display_name, {class:"form-control form-custom"}
+                            .form-group
+                                .text-sm パスワード (半角英数字/4文字以上)
+                                = f.password_field :password, {class:"form-control form-custom"}
+                            .form-group
+                                .text-sm パスワード(確認用)
+                                = f.password_field :password_confirmation, {class:"form-control form-custom"}
+                        .form-grup
+                            = f.submit "アカウントを登録する", {class:"btn btn-primary btn-block"}
+
