@@ -6,14 +6,16 @@
 .bg-light
     .container
         .row.d-flex
-            .card.py-4.bg-light.col-2.align-self-center.text-right
-                = link_to "←",households_path(target_date:@target_month.prev_month().strftime("%Y%m%d"))
+            .card.py-4.bg-light.col-2.align-self-center.text-center
+                = link_to households_path(target_date:@target_month.prev_month().strftime("%Y%m%d")) do
+                    %i.fas.fa-arrow-left
             .card.py-4.bg-light.col-8
                 .card-body.text-center
                     %h2.text-primary #{@target_month.strftime('%m')}月の支出
                     %h3 #{sum(@households)}円
-            .card.py-4.bg-light.col-2.align-self-center.text-left
-                = link_to "→",households_path(target_date:@target_month.next_month().strftime("%Y%m%d"))
+            .card.py-4.bg-light.col-2.align-self-center.text-center
+                = link_to households_path(target_date:@target_month.next_month().strftime("%Y%m%d"))  do
+                    %i.fas.fa-arrow-right
 .bg-white
     .container.py-4
         %h5.text-center 支出の登録
