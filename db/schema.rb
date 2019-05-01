@@ -15,7 +15,9 @@ ActiveRecord::Schema.define(version: 2019_04_30_050810) do
   create_table "accounts", force: :cascade do |t|
     t.string "account_name"
     t.string "display_name"
+    t.string "icon"
     t.string "password_digest"
+    t.integer "delete_flg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

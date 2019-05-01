@@ -11,7 +11,7 @@
                     %i.fas.fa-arrow-left
             .card.py-4.bg-light.col-8
                 .card-body.text-center
-                    %h2.text-primary #{@target_month.strftime('%m')}月の支出
+                    %h2.text-warning #{@target_month.strftime('%m')}月の支出
                     %h3 #{sum(@households)}円
             .card.py-4.bg-light.col-2.align-self-center.text-center
                 = link_to households_path(target_date:@target_month.next_month().strftime("%Y%m%d"))  do
@@ -36,7 +36,7 @@
                 .text-sm メモ
                 = f.text_area :memo, {class:"form-control form-custom"}
             .form-group
-                = f.submit "登録する", {class:"btn btn-primary btn-block"}
+                = f.submit "登録する", {class:"btn btn-warning btn-block"}
 .bg-light
     .container.py-4
         %h5.text-center 支出の履歴
@@ -47,7 +47,7 @@
                         %li.list-group-item.bg-light
                             .payoff-header.d-flex
                                 .payoff-icon
-                                    %i.fas.fa-coins.rounded-circle.bg-primary.text-white.p-3
+                                    %i.rounded-circle.bg-warning.text-white.p-3.fas{class:"fa-#{household.account.icon}"}
                                 .payoff-time-and-content.ml-4.wide-max
                                     .payoff-time.text-muted.text-sm
                                         #{household.event_date.strftime('%m/%d')}  #{household.account.display_name}

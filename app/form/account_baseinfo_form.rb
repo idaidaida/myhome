@@ -1,5 +1,5 @@
 class AccountBaseinfoForm 
   include ActiveModel::Model 
  
-  attr_accessor :display_name, :account_name
+  attr_accessor :display_name, :account_name, :icon
 end 

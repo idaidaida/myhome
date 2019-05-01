@@ -1,7 +1,7 @@
-$primary: #C97FB4;
-$secondary:#A4A9CF;
-$success:#64C99B;
-$warning: rgb(236, 214, 113);
+$primary: #1DAF9E;
+$secondary:#C8EFEA;
+$success:#1F91BE;
+$warning: #F0BA32;
 
 $text-normal: rgb(32, 33, 36);
 $text-muted: rgb(95, 99, 104);
@@ -39,13 +39,67 @@ body {
     font-size: 0.7em !important;
 }
 
-// フォーム
+// ヘッドライン
+.headline-bg-primary {
+    background: $primary;
+    color: white;
+}
+
+.headline-title {
+    font-size: 2em;
+}
+
+// フォーム 
 .form-custom {
     border: none !important;
-    background: rgba(211, 211, 211, 0.308) !important;
-    padding-top: 0.7em !important;
-    padding-bottom: 0.7em !important;
+    background: #e8f0fe !important;
+    padding-top: 0.3em !important;
+    padding-bottom: 0.3em !important;
 }
+
+.link-text-normal {
+    font-weight: normal !important;
+}
+
+// チェックボックス
+.checkbox-form {
+    display: none;
+}
+
+.checkbox-label-bg {
+    border-radius: 5px;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.checkbox-form+.checkbox-label-bg {
+    border: 1px solid $primary;
+    color: $primary;
+}
+
+.checkbox-form:checked+.checkbox-label-bg {
+    border: 1px solid $primary;
+    background: $primary;
+    color: white;
+}
+
+
+// アニメーション(ホップ)
+.animation-hop {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    margin: 10px 0 0 0;
+}
+
+.animation-hop:hover {
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+}
+
 
 @import "bootstrap";
 @import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);

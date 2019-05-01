@@ -17,5 +17,11 @@ class Account < ApplicationRecord
         format: { with: /\A[a-zA-Z0-9]+\z/ },
         length: { minimum: 4 },
         allow_nil: true
+    
+    validates :icon,
+        presence: true
+    
+    validates :delete_flg,
+        presence: true
 
 end

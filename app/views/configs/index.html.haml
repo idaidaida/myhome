@@ -13,7 +13,30 @@
                 .text-sm 表示名
                 = f.text_field :display_name, {class:"form-control form-custom"}
             .form-group
-                = f.submit "更新する", {class:"btn btn-primary btn-block"}
+                .text-sm.text-danger.text-left アイコン
+                .row
+                    .col-md-6
+                        = f.radio_button :icon, "child", {id:"child",class:"checkbox-form"}
+                        %label.checkbox-label-bg(for="child")
+                            %i.fas.fa-child
+                                %span.link-text-normal ひと
+                    .col-md-6
+                        = f.radio_button :icon, "cat", {id:"cat",class:"checkbox-form"}
+                        %label.checkbox-label-bg(for="cat")
+                            %i.fas.fa-cat
+                                %span.link-text-normal ねこ
+                    .col-md-6
+                        = f.radio_button :icon, "dove", {id:"dove",class:"checkbox-form"}
+                        %label.checkbox-label-bg(for="dove")
+                            %i.fas.fa-dove
+                                %span.link-text-normal とり
+                    .col-md-6
+                        = f.radio_button :icon, "dog", {id:"dog",class:"checkbox-form"}
+                        %label.checkbox-label-bg(for="dog")
+                            %i.fas.fa-dog
+                                %span.link-text-normal いぬ
+            .form-group
+                = f.submit "更新する", {class:"btn btn-success btn-block"}
 .bg-light
     .container.py-4
         %h5.text-center パスワードの設定
@@ -25,7 +48,7 @@
                 .text-sm 新しいパスワード(再入力)
                 = f.password_field :password_confirmation, {class:"form-control form-custom"}
             .form-group
-                = f.submit "更新する", {class:"btn btn-primary btn-block"}
+                = f.submit "更新する", {class:"btn btn-success btn-block"}
 .bg-white
     .container.py-4
         %h5.text-center 参加者一覧
@@ -37,4 +60,4 @@
     .bg-light
     .container.py-4
         %h5.text-center ログアウト
-        = link_to "ログアウトする",logins_path,{class:"btn btn-warning btn-block", method: :delete}
+        = link_to "ログアウトする",logins_path,{class:"btn btn-success btn-block", method: :delete}

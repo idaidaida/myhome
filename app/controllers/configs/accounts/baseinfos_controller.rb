@@ -13,6 +13,6 @@ class Configs::Accounts::BaseinfosController < ApplicationController
 
     private
         def update_params
-            params.require(:account_baseinfo_form).permit(:account_name,:display_name)
+            params.require(:account_baseinfo_form).permit(:account_name,:display_name,:icon)
         end
 end
