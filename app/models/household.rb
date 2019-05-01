@@ -12,6 +12,6 @@ class Household < ApplicationRecord
     belongs_to :account
 
     def self.find_by_month(target_month_start_date)
-        where(event_date: (target_month_start_date)..(target_month_start_date.next_month))
+        where(event_date: (target_month_start_date)...(target_month_start_date.next_month))
     end
 end

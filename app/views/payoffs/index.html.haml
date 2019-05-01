@@ -16,17 +16,15 @@
             .alert.alert-secondary.text-secondary
                 全て精算済みです。
         - else
-            .alert.alert-danger.text-center.text-danger
-                !!この操作は取り消せません!!
             %p.text-center.mt-5
                 未精算額を共有財布から受け取ったので、精算済みにします。
-            = link_to "精算処理を実行", payoffs_path, {class:"btn btn-danger btn-block", method: :patch}
-
+            = link_to payoffs_path, {class:"btn btn-danger btn-block", method: :patch} do
+                精算処理を実行<br>
+                (この操作は取り消せません)
 .bg-white
     .container.py-4
         %h5.text-center 未精算の支払い詳細
         - if sum(@not_payoffed_households) == 0
-            .alert.alert-secondary.text-secondary
                 全て精算済みです。
         - else
             - @not_payoffed_households.each do |household|
@@ -35,7 +33,7 @@
                         %li.list-group-item
                             .payoff-header.d-flex
                                 .payoff-icon
-                                    %i.fas.fa-coins.rounded-circle.bg-primary.text-white.p-3
+                                    %i.rounded-circle.bg-warning.text-white.p-3.fas{class:"fa-#{household.account.icon}"}
                                 .payoff-time-and-content.ml-4.wide-max
                                     .payoff-time.text-muted.text-sm
                                         #{household.event_date.strftime('%m/%d')}   #{household.account.display_name}
