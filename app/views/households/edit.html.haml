@@ -24,4 +24,5 @@
                 = f.text_area :memo, {class:"form-control form-custom"}
             .form-group
                 = f.submit "更新する", {class:"btn btn-primary btn-block"}
+                = link_to "!!!削除する!!!", household_path(@household),{class:"btn btn-danger btn-block", method: :delete}
                 = link_to "戻る", household_path(@household),{class:"btn btn-outline-primary btn-block text-primary"}

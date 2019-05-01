@@ -9,5 +9,5 @@
                         #{(Date.today.beginning_of_month - i.months).strftime('%m')}月
                     .progress.wide-max.ml-2
                         .progress-bar{role:"progressbar",style:"width:#{(sum(Household.find_by_month(Date.today.beginning_of_month - i.months))*100)/target_amount}%"}
-                            #{sum(@households_of_this_month)} 円
+                            #{sum(Household.find_by_month(Date.today.beginning_of_month - i.months))} 円
             .text-sm.text-right.text-muted  ※最大#{target_amount}円

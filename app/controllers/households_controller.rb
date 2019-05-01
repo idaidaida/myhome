@@ -43,6 +43,14 @@ class HouseholdsController < ApplicationController
             render "show"
         end
     end
+
+    def destroy
+        @household = login_account_obj.households.find(params[:id])
+        @household.destroy
+        redirect_to households_url
+    end
+
+
     private
         def create_params
             params.require(:household).permit(:item_name,:event_date,:amount,:memo)
