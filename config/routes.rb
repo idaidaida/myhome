@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :logins, only:[:new,:create] do
     delete :destroy, on: :collection
   end
-  resources :households, only:[:index,:create]
+  resources :households, only:[:index,:create,:show,:edit,:update]
   resources :dashboards, only:[:index]
   resources :configs, only:[:index]
   resources :payoffs, only:[:index] do

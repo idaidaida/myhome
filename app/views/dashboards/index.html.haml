@@ -1,38 +1,13 @@
 .bg-white
     .container.py-4
-        %h5.text-center 直近３ヶ月の推移
+        %h5.text-center 直近の支出額推移
         .py-4
-            .d-flex
-                - target_amount = 20000
-                .month
-                    4月
-                .progress.wide-max.ml-2
-                    .progress-bar-success.progress-bar{role:"progressbar",style:"width:#{(sum(@households_of_this_month)*100)/target_amount}%"}
-                        #{sum(@households_of_this_month)} 円
-            .d-flex
-                .month
-                    3月
-                .progress.wide-max.ml-2
-                    .progress-bar{role:"progressbar",style:"width:#{(sum(@households_of_one_month_ago)*100)/target_amount}%"}
-                    #{sum(@households_of_one_month_ago)} 円
-            .d-flex
-                .month
-                    2月
-                .progress.wide-max.ml-2
-                    .progress-bar{role:"progressbar",style:"width:#{(sum(@households_of_two_month_ago)*100)/target_amount}%"}
-                    #{sum(@households_of_two_month_ago)} 円
-            .d-flex
-                .month
-                    1月
-                .progress.wide-max.ml-2
-                    .progress-bar{role:"progressbar",style:"width:#{(sum(@households_of_three_month_ago)*100)/target_amount}%"}
-                    #{sum(@households_of_three_month_ago)} 円
+            - target_amount = 20000
+            - (0..6).each do |i|
+                .d-flex.py-1
+                    .month
+                        #{(Date.today.beginning_of_month - i.months).strftime('%m')}月
+                    .progress.wide-max.ml-2
+                        .progress-bar{role:"progressbar",style:"width:#{(sum(Household.find_by_month(Date.today.beginning_of_month - i.months))*100)/target_amount}%"}
+                            #{sum(@households_of_this_month)} 円
             .text-sm.text-right.text-muted  ※最大#{target_amount}円
-.bg-light
-    .container.py-4
-        %h5.text-center 未精算一覧
-        - @accounts.each do |account|
-            .card
-                %ul.list-group.list-group-flush.bg-light
-                    %li.list-group-item.bg-light
-                        #{account.display_name} ： #{sum(account.households.where.not(payoff_flg:1))} 円

@@ -4,6 +4,9 @@
             .card.card-border-primary.card-shadow
                 .card-body
                     %h4.text-center.text-primary ログイン
+                    - if flash[:alert]
+                        .alert.alert-danger
+                            #{flash[:alert]}
                     = form_for :login_form,url: logins_path do |f|
                         .text-muted.py-3
                             .form-group

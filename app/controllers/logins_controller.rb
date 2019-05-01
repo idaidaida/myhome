@@ -10,7 +10,7 @@ class LoginsController < ApplicationController
         account = Account.find_by(account_name:create_params[:account_name])
         if account && account.authenticate(create_params[:password])
             set_login_session(account.id)
-            redirect_to dashboards_url
+            redirect_to households_url
         else
             p @account
             flash[:alert] = "ユーザー名かパスワードに誤りがあります"

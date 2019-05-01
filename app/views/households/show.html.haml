@@ -1,0 +1,36 @@
+.d-flex.justify-content-around.text-center
+    = link_to households_path,{class:"border-btm-primary menu-item py-3"} do
+        家計簿
+    = link_to payoffs_path,{class:"border-btm-lightgray menu-item py-3"} do
+        精算
+.bg-light
+    .container.py-4
+        %h5.text-center 詳細
+        - if flash[:alert]
+            .alert.alert-danger
+                #{flash[:alert]}
+        .card.bg-light.pb-3
+            %ul.list-group.list-group-flush.bg-light
+                %li.list-group-item.bg-light
+                    .text-sm.d-block
+                        支払日
+                    .text-left
+                        #{@household.event_date.strftime("%m月%d日")}
+                %li.list-group-item.bg-light
+                    .text-sm.d-block
+                        内容
+                    .text-left
+                        #{@household.item_name}
+                %li.list-group-item.bg-light
+                    .text-sm.d-block
+                        金額
+                    .text-left
+                        #{@household.amount} 円
+                %li.list-group-item.bg-light
+                    .text-sm.d-block
+                        メモ
+                    .text-left
+                        #{@household.memo}
+        - if @household.account.id == login_account_id
+            = link_to "編集する", edit_household_path(@household),{class:"btn btn-primary btn-block"}
+        = link_to "戻る", households_path ,{class:"btn btn-outline-primary btn-block text-primary"}

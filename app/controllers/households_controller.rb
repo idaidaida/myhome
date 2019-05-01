@@ -18,15 +18,37 @@ class HouseholdsController < ApplicationController
         @household.account_id = login_account_id
         @household.payoff_flg = 0
         if @household.save
-            flash[:info] = "支出を登録しました"
             redirect_to households_url
         else
+            flash[:alert] = "日付/金額/内容は必須です"
             redirect_to households_url
         end
     end
 
+    def show
+        @household = Household.find(params[:id])
+    end
+
+    def edit
+        @household = Household.find(params[:id])
+    end
+
+    def update
+        @household = login_account_obj.households.find(params[:id])
+        if @household && @household.update_attributes(update_params)
+            redirect_to household_url(params[:id])
+        else
+            @household = Household.find(params[:id])
+            flash[:alert] = "このレコードを更新する権限がありません"
+            render "show"
+        end
+    end
     private
         def create_params
+            params.require(:household).permit(:item_name,:event_date,:amount,:memo)
+        end
+
+        def update_params
             params.require(:household).permit(:item_name,:event_date,:amount,:memo)
         end
 
