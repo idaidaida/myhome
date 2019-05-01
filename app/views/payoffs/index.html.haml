@@ -13,8 +13,7 @@
     .container.py-4
         %h5.text-center 精算処理
         - if sum(@not_payoffed_households) == 0
-            .alert.alert-secondary.text-secondary
-                全て精算済みです。
+            %p.text-center 全て精算済みです。
         - else
             %p.text-center.mt-5
                 未精算額を共有財布から受け取ったので、精算済みにします。
@@ -25,7 +24,7 @@
     .container.py-4
         %h5.text-center 未精算の支払い詳細
         - if sum(@not_payoffed_households) == 0
-                全て精算済みです。
+            %p.text-center 全て精算済みです。
         - else
             - @not_payoffed_households.each do |household|
                 .card
