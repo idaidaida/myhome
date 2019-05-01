@@ -17,16 +17,20 @@
 .bg-white
     .container.py-4
         %h5.text-center 支出の登録
+        - if @household.errors.any?
+            - @household.errors.full_messages.each do |msg|
+                .alert.alert-danger
+                    #{msg}
         = form_for @household do |f|
+            .form-group
+                .text-sm 日付
+                = f.date_field :event_date, {class:"form-control form-custom",value: "#{Time.now.strftime('%Y-%m-%d')}"}
             .form-group
                 .text-sm 金額
                 = f.number_field :amount, {class:"form-control form-custom"}
             .form-group
                 .text-sm メモ
                 = f.text_field :memo, {class:"form-control form-custom"}
-            .form-group
-                .text-sm 日付
-                = f.date_field :event_date, {class:"form-control form-custom",value: "#{Time.now.strftime('%Y-%m-%d')}"}
             .form-group
                 = f.submit "登録する", {class:"btn btn-primary btn-block"}
 .bg-white

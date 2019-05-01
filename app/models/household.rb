@@ -1,6 +1,6 @@
 class Household < ApplicationRecord
 
-    validates :item_name,
+    validates :memo,
         presence: true
 
     validates :event_date,
