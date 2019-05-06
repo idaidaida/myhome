@@ -20,23 +20,26 @@
             = link_to payoffs_path, {class:"btn btn-danger btn-block", method: :patch} do
                 精算処理を実行<br>
                 (この操作は取り消せません)
-.bg-white
+.bg-light
     .container.py-4
         %h5.text-center 未精算の支払い詳細
         - if sum(@not_payoffed_households) == 0
             %p.text-center 全て精算済みです。
         - else
             - @not_payoffed_households.each do |household|
-                .card
-                    %ul.list-group.list-group-flush
-                        %li.list-group-item
+                .card.bg-light
+                    %ul.list-group.list-group-flush.bg-light
+                        %li.list-group-item.bg-light
                             .payoff-header.d-flex
                                 .payoff-icon
                                     %i.rounded-circle.bg-warning.text-white.p-3.fas{class:"fa-#{household.account.icon}"}
                                 .payoff-time-and-content.ml-4.wide-max
                                     .payoff-time.text-muted.text-sm
                                         #{household.event_date.strftime('%m/%d')}   #{household.account.display_name}
-                                    .payoff-content
-                                        #{household.amount}
+                                    .payoff-content.d-flex
+                                        .item_name
+                                            #{household.item_name}
+                                        .price.ml-2
+                                            #{household.amount} 円
                                     .payoff-body
                                         #{household.memo}
