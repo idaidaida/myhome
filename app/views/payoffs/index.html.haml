@@ -11,14 +11,14 @@
                 %h3 #{sum(@not_payoffed_households)} 円
 .bg-white
     .container.py-4
-        %h5.text-center 精算処理
+        %h5.text-center 一括精算処理
         - if sum(@not_payoffed_households) == 0
             %p.text-center 全て精算済みです。
         - else
-            %p.text-center.mt-5
-                未精算額を共有財布から受け取ったので、精算済みにします。
+            %p.text-center.mt-1
+                共有財布からお金を受け取りましたか？
             = link_to payoffs_path, {class:"btn btn-danger btn-block", method: :patch} do
-                精算処理を実行<br>
+                一括精算処理を実行<br>
                 (この操作は取り消せません)
 .bg-light
     .container.py-4

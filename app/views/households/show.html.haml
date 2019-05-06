@@ -31,6 +31,14 @@
                         メモ
                     .text-left
                         #{@household.memo}
+                %li.list-group-item.bg-light
+                    .text-sm.d-block
+                        精算状態
+                    .text-left
+                        - if @household.payoff_flg == 1
+                            精算済み
+                        - else
+                            未精算
         - if @household.account.id == login_account_id
             = link_to "編集する", edit_household_path(@household),{class:"btn btn-warning btn-block"}
         = link_to "戻る", households_path ,{class:"btn btn-outline-warning btn-block text-warning"}

@@ -36,6 +36,11 @@
                 .text-sm メモ
                 = f.text_area :memo, {class:"form-control form-custom"}
             .form-group
+                .text-sm 精算状態
+                .pt-2
+                    = f.check_box :payoff_flg,{class:""}
+                    = f.label :payoff_flg, "「精算済み」で登録する", {class:""}
+            .form-group
                 = f.submit "登録する", {class:"btn btn-warning btn-block"}
 .bg-light
     .container.py-4

@@ -11,12 +11,12 @@ class HouseholdsController < ApplicationController
         
         @households = Household.find_by_month(@target_month).order(event_date: "DESC")
         @household = Household.new
+
     end
 
     def create
         @household = Household.new(create_params)
         @household.account_id = login_account_id
-        @household.payoff_flg = 0
         if @household.save
             redirect_to households_url
         else
@@ -53,11 +53,11 @@ class HouseholdsController < ApplicationController
 
     private
         def create_params
-            params.require(:household).permit(:item_name,:event_date,:amount,:memo)
+            params.require(:household).permit(:item_name,:event_date,:amount,:memo,:payoff_flg)
         end
 
         def update_params
-            params.require(:household).permit(:item_name,:event_date,:amount,:memo)
+            params.require(:household).permit(:item_name,:event_date,:amount,:memo,:payoff_flg)
         end
 
 

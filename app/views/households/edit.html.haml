@@ -23,6 +23,11 @@
                 .text-sm メモ
                 = f.text_area :memo, {class:"form-control form-custom"}
             .form-group
+                .text-sm 精算状態
+                .pt-2
+                    = f.check_box :payoff_flg,{class:""}
+                    = f.label :payoff_flg, "「精算済み」にする", {class:""}
+            .form-group
                 = f.submit "更新する", {class:"btn btn-warning btn-block"}
                 = link_to "!!!削除する!!!", household_path(@household),{class:"btn btn-danger btn-block", method: :delete}
                 = link_to "戻る", household_path(@household),{class:"btn btn-outline-warning btn-block text-warning"}
