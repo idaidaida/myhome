@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_050810) do
+ActiveRecord::Schema.define(version: 2019_05_12_134045) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "account_name"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 2019_04_30_050810) do
     t.datetime "updated_at", null: false
     t.integer "payoff_flg"
     t.index ["account_id"], name: "index_households_on_account_id"
+  end
+
+  create_table "masters", force: :cascade do |t|
+    t.integer "chart_max_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
